@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">VixApp</string>
+    <string name="action_try_out_premium">Prueba Premium</string>
+    <string name="ok">Ok</string>
+    <string name="see">Ver ahora</string>
+    <string name="director">Director:</string>
+    <string name="casting">Elenco:</string>
+    <string name="error">Ha ocurrido un error</string>
+    <string name="item_not_found">Contenido no disponible en tu país.</string>
+</resources>
