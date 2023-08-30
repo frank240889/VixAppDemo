@@ -5,8 +5,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layoutId
@@ -14,7 +16,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import dev.franco.vixapp.R
@@ -47,10 +49,16 @@ internal fun TopContent(
                     .placeholder(R.drawable.vix_logo)
                     .memoryCachePolicy(CachePolicy.DISABLED)
                     .build()
-                AsyncImage(
+                SubcomposeAsyncImage(
                     model = imageRequest,
                     contentDescription = null,
                     contentScale = ContentScale.Inside,
+                    loading = {
+                        CircularProgressIndicator(
+                            modifier = Modifier
+                                .align(Alignment.Center),
+                        )
+                    },
                 )
             }
         }

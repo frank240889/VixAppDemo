@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,7 +21,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import coil.compose.AsyncImage
+import coil.compose.SubcomposeAsyncImage
 import coil.request.CachePolicy
 import coil.request.ImageRequest
 import dev.franco.vixapp.R
@@ -68,10 +69,16 @@ internal fun StreamContent(
                     .placeholder(R.drawable.vix_logo)
                     .memoryCachePolicy(CachePolicy.DISABLED)
                     .build()
-                AsyncImage(
+                SubcomposeAsyncImage(
                     model = imageRequest,
                     contentDescription = null,
                     contentScale = ContentScale.FillBounds,
+                    loading = {
+                        CircularProgressIndicator(
+                            modifier = Modifier
+                                .align(Alignment.Center),
+                        )
+                    },
                 )
             }
         }
